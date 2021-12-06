@@ -1,19 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import FilterContext from '../context/FilterContext';
 
 const type = ['population', 'orbital_period',
   'diameter', 'rotation_period', 'surface_water'];
 
 export default function Filter() {
-  const [filterON, setFilterON] = useState();
-
   const { filter, handleChange, getTypeComparison,
-    getTypeColumn, getTypevalue, filterByvalue,
+    getTypeColumn, getTypevalue, filterByNumericValues, channgeFilter,
   } = useContext(FilterContext);
-
-  const channgeFilter = () => {
-    setFilterON(true);
-  };
 
   return (
     <div>
@@ -44,7 +38,7 @@ export default function Filter() {
         <option value="igual a">igual a</option>
       </select>
       <input
-        value={ filterByvalue }
+        value={ filterByNumericValues[0].value }
         type="number"
         data-testid="value-filter"
         onChange={ getTypevalue }
@@ -53,7 +47,7 @@ export default function Filter() {
       <button
         type="button"
         data-testid="button-filter"
-        onClick={ () => channgeFilter }
+        onClick={ channgeFilter }
       >
         Filtrar
       </button>

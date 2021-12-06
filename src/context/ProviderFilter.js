@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import FilterContext from './FilterContext';
 
 export default function ProviderFilter({ children }) {
   const [filter, setFilter] = useState('');
-  const [filterByColumn, setfilterByColumn] = useState('');
+  const [filterByColumn, setfilterByColumn] = useState('population');
   const [filterByComparison, setfilterByComparison] = useState('maior que');
-  const [filterByvalue, setfilterByvalue] = useState('');
-  const [filterON, setFilterON] = useState();
+  const [filterByvalue, setfilterByvalue] = useState(0);
+  const [filterON, setFilterON] = useState(false);
+  const [apiReturn, setApiReturn] = useState([]);
+
+  const requestApi = () => {
+    fetch('https://swapi-trybe.herokuapp.com/api/planets/')
+      .then((resp) => resp.json())
+      .then((r) => setApiReturn(r.results));
+  };
+
+  useEffect(() => {
+    requestApi();
+  }, []);
 
   const handleChange = ({ target: { value } }) => {
     setFilter(value);
@@ -35,6 +47,8 @@ export default function ProviderFilter({ children }) {
       comparison: filterByComparison,
       value: filterByvalue,
     }],
+    apiReturn,
+    filterON,
     handleChange,
     getTypeComparison,
     getTypevalue,
@@ -47,3 +61,7 @@ export default function ProviderFilter({ children }) {
     </FilterContext.Provider>
   );
 }
+
+ProviderFilter.propTypes = {
+  children: PropTypes.node.isRequired,
+};
