@@ -319,7 +319,7 @@ O que será verificado:
 
 ### 6 - Ordene as colunas de forma ascendente ou descendente
 
-A informação acerca da ordenação das colunas deve ser armazenada em um novo campo `{ order: { column: 'population', sort: 'ASC'} }`, o campo column representa o nome da coluna a ordenar e a ordem representa a ordenação, sendo 'ASC' ascendente e 'DESC' descendente. Por padrão, a tabela começa ordenada pela coluna 'population' em ordem ascendente. Por exemplo:
+A informação acerca da ordenação das colunas deve ser armazenada em um novo campo `{ order: { column: 'population', sort: 'ASC'} }`, o campo column representa o nome da coluna a ordenar e a ordem representa a ordenação, sendo 'ASC' ascendente e 'DESC' descendente. Por padrão, a tabela começa ordenada pelo nome em ordem alfabética. Por exemplo:
 
 ```javascript
 {
