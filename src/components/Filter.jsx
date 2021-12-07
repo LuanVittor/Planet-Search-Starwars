@@ -4,7 +4,23 @@ import FilterContext from '../context/FilterContext';
 export default function Filter() {
   const { filter, handleChange, getTypeComparison,
     getTypeColumn, getTypevalue, channgeFilter, filterByvalue, type, filterByColumn,
+    filterByNumericValues, removeFilter,
   } = useContext(FilterContext);
+
+  const filters = () => (
+    filterByNumericValues.map((elem) => (
+      <div key={ elem.column } data-testid="filter">
+        <p>{`${elem.column} ${elem.comparison} ${elem.value}`}</p>
+        <button
+          type="button"
+          name={ elem.column }
+          onClick={ (event) => removeFilter(event) }
+        >
+          X
+        </button>
+      </div>
+    ))
+  );
 
   return (
     <div>
@@ -49,6 +65,7 @@ export default function Filter() {
       >
         Filtrar
       </button>
+      {filters()}
     </div>
   );
 }

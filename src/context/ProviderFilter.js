@@ -59,6 +59,13 @@ export default function ProviderFilter({ children }) {
     setFilterON(true);
   };
 
+  const removeFilter = ({ target: { name } }) => {
+    const updateFilter = filterAll
+      .filter((elem) => elem.column !== name);
+    setFilterAll([...updateFilter]);
+    setType([...type, name]);
+  };
+
   const myContext = {
     filterByName: { name: filter },
     filterByNumericValues: filterAll,
@@ -71,7 +78,8 @@ export default function ProviderFilter({ children }) {
     getTypeComparison,
     getTypevalue,
     getTypeColumn,
-    channgeFilter };
+    channgeFilter,
+    removeFilter };
 
   return (
     <FilterContext.Provider value={ myContext }>
