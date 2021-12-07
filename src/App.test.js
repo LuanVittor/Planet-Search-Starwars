@@ -279,7 +279,7 @@ describe.only('3 - Crie um filtro para valores numéricos', () => {
   });
 });
 
-describe('4 - Não utilize filtros repetidos', () => {
+describe.only('4 - Não utilize filtros repetidos', () => {
   beforeAll(mockFetch);
   beforeEach(cleanup);
 

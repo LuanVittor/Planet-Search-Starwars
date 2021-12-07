@@ -1,12 +1,9 @@
 import React, { useContext } from 'react';
 import FilterContext from '../context/FilterContext';
 
-const type = ['population', 'orbital_period',
-  'diameter', 'rotation_period', 'surface_water'];
-
 export default function Filter() {
   const { filter, handleChange, getTypeComparison,
-    getTypeColumn, getTypevalue, filterByNumericValues, channgeFilter,
+    getTypeColumn, getTypevalue, channgeFilter, filterByvalue, type, filterByColumn,
   } = useContext(FilterContext);
 
   return (
@@ -24,6 +21,7 @@ export default function Filter() {
       <select
         onChange={ ({ target }) => getTypeColumn(target.value) }
         data-testid="column-filter"
+        value={ filterByColumn }
       >
         {type.map((elem, i) => (
           <option key={ i } value={ elem }>{ elem }</option>
@@ -38,7 +36,7 @@ export default function Filter() {
         <option value="igual a">igual a</option>
       </select>
       <input
-        value={ filterByNumericValues[0].value }
+        value={ filterByvalue }
         type="number"
         data-testid="value-filter"
         onChange={ getTypevalue }

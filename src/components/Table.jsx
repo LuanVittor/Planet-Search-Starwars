@@ -6,38 +6,40 @@ export default function Table() {
     apiReturn, filterON } = useContext(FilterContext);
 
   const advancedFilter = () => {
-    const { column, value, comparison } = filterByNumericValues[0];
-
-    return apiReturn.filter((elem) => (elem.name.includes(filterByName.name)))
-      .filter((elem) => {
-        switch (comparison) {
-        case 'maior que':
-          return Number(elem[column]) > value;
-        case 'menor que':
-          return Number(elem[column]) < value;
-        case 'igual a':
-          return Number(elem[column]) === Number(value);
-        default:
-          return false;
-        }
-      })
-      .map((elem) => (
-        <tr key={ elem.name }>
-          <td>{ elem.name }</td>
-          <td>{ elem.rotation_period }</td>
-          <td>{ elem.orbital_period }</td>
-          <td>{ elem.diameter }</td>
-          <td>{ elem.climate }</td>
-          <td>{ elem.gravity }</td>
-          <td>{ elem.terrain }</td>
-          <td>{ elem.surface_water }</td>
-          <td>{ elem.population }</td>
-          <td>{ elem.films }</td>
-          <td>{ elem.created }</td>
-          <td>{ elem.edited }</td>
-          <td>{ elem.url }</td>
-        </tr>
-      ));
+    let objFiltered = apiReturn;
+    filterByNumericValues.forEach((e) => {
+      const { column, value, comparison } = e;
+      objFiltered = objFiltered.filter((elem) => (elem.name.includes(filterByName.name)))
+        .filter((elem) => {
+          switch (comparison) {
+          case 'maior que':
+            return Number(elem[column]) > value;
+          case 'menor que':
+            return Number(elem[column]) < value;
+          case 'igual a':
+            return Number(elem[column]) === Number(value);
+          default:
+            return false;
+          }
+        });
+    });
+    return objFiltered.map((elem) => (
+      <tr key={ elem.name }>
+        <td>{ elem.name }</td>
+        <td>{ elem.rotation_period }</td>
+        <td>{ elem.orbital_period }</td>
+        <td>{ elem.diameter }</td>
+        <td>{ elem.climate }</td>
+        <td>{ elem.gravity }</td>
+        <td>{ elem.terrain }</td>
+        <td>{ elem.surface_water }</td>
+        <td>{ elem.population }</td>
+        <td>{ elem.films }</td>
+        <td>{ elem.created }</td>
+        <td>{ elem.edited }</td>
+        <td>{ elem.url }</td>
+      </tr>
+    ));
   };
 
   return (
@@ -57,7 +59,6 @@ export default function Table() {
           <th>created</th>
           <th>edited</th>
           <th>url</th>
-
         </tr>
       </thead>
       <tbody>
