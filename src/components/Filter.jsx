@@ -4,8 +4,11 @@ import FilterContext from '../context/FilterContext';
 export default function Filter() {
   const { filter, handleChange, getTypeComparison,
     getTypeColumn, getTypevalue, channgeFilter, filterByvalue, type, filterByColumn,
-    filterByNumericValues, removeFilter,
+    filterByNumericValues, removeFilter, filterSortInput, typeSort, filterSort, sortOFF,
   } = useContext(FilterContext);
+
+  const typedSort = ['population', 'orbital_period',
+    'diameter', 'rotation_period', 'surface_water'];
 
   const filters = () => (
     filterByNumericValues.map((elem) => (
@@ -64,6 +67,37 @@ export default function Filter() {
         onClick={ channgeFilter }
       >
         Filtrar
+      </button>
+      <select
+        onChange={ ({ target }) => filterSortInput(target.value) }
+        data-testid="column-sort"
+        value={ typeSort }
+      >
+        {typedSort.map((elem, i) => (
+          <option key={ i } value={ elem }>{ elem }</option>
+        ))}
+      </select>
+      Ascendente
+      <input
+        type="radio"
+        data-testid="column-sort-input-asc"
+        name="sort"
+        onChange={ () => filterSort('ASC') }
+      />
+      Descendente
+      <input
+        type="radio"
+        data-testid="column-sort-input-desc"
+        name="sort"
+        onChange={ () => filterSort('DESC') }
+
+      />
+      <button
+        type="button"
+        data-testid="column-sort-button"
+        onClick={ sortOFF }
+      >
+        Ordernar
       </button>
       {filters()}
     </div>

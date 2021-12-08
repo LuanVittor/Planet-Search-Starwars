@@ -13,7 +13,10 @@ export default function ProviderFilter({ children }) {
   const [filterByvalue, setfilterByvalue] = useState(0);
   const [filterAll, setFilterAll] = useState([]);
   const [filterON, setFilterON] = useState(false);
+  const [sortON, setSortON] = useState(false);
   const [apiReturn, setApiReturn] = useState([]);
+  const [typeSort, setTypeSort] = useState('population');
+  const [sortPlanet, setSortPlanet] = useState('ASC');
 
   const requestApi = () => {
     fetch('https://swapi-trybe.herokuapp.com/api/planets/')
@@ -66,20 +69,38 @@ export default function ProviderFilter({ children }) {
     setType([...type, name]);
   };
 
+  const filterSortInput = (value) => {
+    setTypeSort(value);
+  };
+
+  const filterSort = (sort) => {
+    setSortPlanet(sort);
+  };
+
+  const sortOFF = () => {
+    setSortON(true);
+  };
+
   const myContext = {
     filterByName: { name: filter },
     filterByNumericValues: filterAll,
+    order: { column: typeSort, sort: sortPlanet },
     apiReturn,
     filterON,
     filterByvalue,
     type,
     filterByColumn,
+    typeSort,
+    sortON,
+    sortOFF,
     handleChange,
     getTypeComparison,
     getTypevalue,
     getTypeColumn,
     channgeFilter,
-    removeFilter };
+    removeFilter,
+    filterSortInput,
+    filterSort };
 
   return (
     <FilterContext.Provider value={ myContext }>
