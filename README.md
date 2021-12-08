@@ -343,7 +343,6 @@ O que será verificado:
 - Verifica ordenação inicial
 - Ordena os planetas do maior período orbital para o menor período orbital
 - Ordena os planetas do menor diametro para o maior diametro
-- Ordena os planetas do mais populoso para o menos populoso
 
 ```
 ![img](req-6.gif)
