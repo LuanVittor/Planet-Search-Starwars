@@ -324,7 +324,7 @@ A informação acerca da ordenação das colunas deve ser armazenada em um novo 
 ```javascript
 {
   order: {
-    column: 'population',
+    column: 'orbital_period',
     sort: 'ASC',
   }
 }
