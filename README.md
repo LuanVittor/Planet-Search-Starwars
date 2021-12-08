@@ -319,12 +319,12 @@ O que será verificado:
 
 ### 6 - Ordene as colunas de forma ascendente ou descendente
 
-A informação acerca da ordenação das colunas deve ser armazenada em um novo campo `{ order: { column: 'orbital_period', sort: 'ASC'} }`, o campo column representa o nome da coluna a ordenar e a ordem representa a ordenação, sendo 'ASC' ascendente e 'DESC' descendente. Por padrão, a tabela começa ordenada pelo nome em ordem alfabética. Por exemplo:
+A informação acerca da ordenação das colunas deve ser armazenada em um novo campo `{ order: { column: 'name', sort: 'ASC'} }`, o campo column representa o nome da coluna a ordenar e a ordem representa a ordenação, sendo 'ASC' ascendente e 'DESC' descendente. Por padrão, a tabela deverá começar ordenada pela coluna 'name' em ordem ascendente. Por exemplo:
 
 ```javascript
 {
   order: {
-    column: 'orbital_period',
+    column: 'name',
     sort: 'ASC',
   }
 }
