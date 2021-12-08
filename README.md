@@ -319,12 +319,12 @@ O que será verificado:
 
 ### 6 - Ordene as colunas de forma ascendente ou descendente
 
-A informação acerca da ordenação das colunas deve ser armazenada em um novo campo `{ order: { column: 'population', sort: 'ASC'} }`, o campo column representa o nome da coluna a ordenar e a ordem representa a ordenação, sendo 'ASC' ascendente e 'DESC' descendente. Por padrão, a tabela começa ordenada pela coluna 'population' em ordem ascendente. Por exemplo:
+A informação acerca da ordenação das colunas deve ser armazenada em um novo campo `{ order: { column: 'name', sort: 'ASC'} }`, o campo column representa o nome da coluna a ordenar e a ordem representa a ordenação, sendo 'ASC' ascendente e 'DESC' descendente. Por padrão, a tabela deverá começar ordenada pela coluna 'name' em ordem ascendente. Por exemplo:
 
 ```javascript
 {
   order: {
-    column: 'population',
+    column: 'name',
     sort: 'ASC',
   }
 }
@@ -343,7 +343,6 @@ O que será verificado:
 - Verifica ordenação inicial
 - Ordena os planetas do maior período orbital para o menor período orbital
 - Ordena os planetas do menor diametro para o maior diametro
-- Ordena os planetas do mais populoso para o menos populoso
 
 ```
 ![img](req-6.gif)
