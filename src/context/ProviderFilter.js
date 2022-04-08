@@ -68,10 +68,11 @@ export default function ProviderFilter({ children }) {
     setFilterAll([...updateFilter]);
     setType([...type, name]);
   };
+  import { createContext } from 'react';
 
-  const filterSortInput = (value) => {
-    setTypeSort(value);
-  };
+  const ApiContext = createContext();
+  
+  export default ApiContext;
 
   const filterSort = (sort) => {
     setSortPlanet(sort);
